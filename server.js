@@ -6,8 +6,8 @@ const port = 3000;
 app.use(express.json());
 
 // Importar rotas
-// const newsRoutes = require('./routes/newsRoutes');
-// app.use("api/news", newsRoutes);
+const newsRoutes = require('./routes/newsRoutes');
+app.use("api/news", newsRoutes);
 
 // Ver resposta do servidor
 app.listen(port, () => {

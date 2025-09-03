@@ -8,7 +8,8 @@ async function main(instruction, text) {
     model: "gemini-2.0-flash",
     contents: `Instrução: ${instruction} \n Texto: ${text}`,
   });
-  console.log(response.text);
+  
+  return response.text
 }
 
 module.exports = main;
