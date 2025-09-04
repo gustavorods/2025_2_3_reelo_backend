@@ -5,6 +5,10 @@ async function getNews(req, res) {
     let news = await newsService.getNews();     
     let translatedNews = await newsService.transleteNews(news);
 
+    if (!translatedNews || translatedNews.length === 0) {
+     throw new Error("Erro ao traduzir as notícias");
+    }
+
     res.json(translatedNews);
   } catch (error) {
     console.error(`Error to get the news or translate the news \n ERROR: ${error}`);  

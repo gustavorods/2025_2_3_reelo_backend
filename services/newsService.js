@@ -15,11 +15,27 @@ async function getNews() {
 // This function translate the news (In the futere we can uptade this function to specify the language)
 async function transleteNews(news) {
     try {
-        let translantedNews = await gemini("Translete all theses informations to portuguese and return me a json", JSON.stringify(news));
-        return translantedNews;
+        let translantedNews = await gemini(
+              "Translate all these news items into Portuguese and return only valid JSON, no explanations, no markdown.", 
+            JSON.stringify(news));
+
+
+        return cleanAndParse(translantedNews);
     } catch (error) {
         console.log(`Error to tranlete the news \n ERROR: ${error}`)
     }
 }
 
+// This function removes the markdawn tags and transforms the string into json
+function cleanAndParse(jsonString) {
+  // remove blocos ```json ... ```
+  const cleaned = jsonString
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
+
+  return JSON.parse(cleaned);
+}
+
 module.exports = {getNews, transleteNews};
+
