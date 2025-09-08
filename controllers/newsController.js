@@ -1,4 +1,4 @@
-const newsService = require("../services/newsService");
+const newsService = require('../services/newsService');
 
 async function getNews(req, res) {
   try {

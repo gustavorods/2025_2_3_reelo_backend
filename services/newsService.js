@@ -28,7 +28,7 @@ async function transleteNews(news) {
 
 // This function removes the markdawn tags and transforms the string into json
 function cleanAndParse(jsonString) {
-  // remove blocos ```json ... ```
+  // remove ```json ... ```
   const cleaned = jsonString
     .replace(/```json/g, "")
     .replace(/```/g, "")
