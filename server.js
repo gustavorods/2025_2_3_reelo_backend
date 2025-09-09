@@ -9,7 +9,6 @@ app.use(express.json());
 const newsRoutes = require('./routes/newsRoutes');
 const auth = require('./middlewares/auth'); 
 
-app.use("/api/news", newsRoutes);
 app.use("/api/news", auth.checkApiKey, newsRoutes);
 
 // Ver resposta do servidor
